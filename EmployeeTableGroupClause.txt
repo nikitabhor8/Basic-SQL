@@ -1,0 +1,78 @@
+
+
+
+mysql> use anudip9926;
+Database changed
+
+mysql> CREATE TABLE employe (
+    ->     Emp_Id INT PRIMARY KEY,
+    ->     Emp_name VARCHAR(25),
+    ->     Age INT,
+    ->     Gender CHAR(1),
+    ->     DOJ DATE,
+    ->     Dept VARCHAR(20),
+    ->     city VARCHAR(20),
+    ->     Salary FLOAT
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> INSERT INTO employe (Emp_Id, Emp_name, Age, Gender, DOJ, Dept, city, Salary) VALUES
+    -> (1, 'Alice Johnson', 28, 'F', '2023-01-15', 'Finance', 'New York', 60000.00),
+    -> (2, 'Bob Smith', 34, 'M', '2023-05-22', 'IT', 'San Francisco', 75000.00),
+    -> (3, 'Carol White', 29, 'F', '2023-02-10', 'HR', 'Los Angeles', 55000.00),
+    -> (4, 'David Brown', 45, 'M', '2023-03-05', 'Marketing', 'Chicago', 80000.00),
+    -> (5, 'Eve Davis', 38, 'F', '2023-06-18', 'Sales', 'Houston', 68000.00),
+    -> (6, 'Frank Miller', 41, 'M', '2023-04-15', 'IT', 'Seattle', 90000.00),
+    -> (7, 'Grace Wilson', 26, 'F', '2023-07-01', 'Marketing', 'Boston', 70000.00),
+    -> (8, 'Henry Moore', 33, 'M', '2023-08-20', 'Finance', 'Miami', 62000.00),
+    -> (9, 'Ivy Clark', 30, 'F', '2023-09-10', 'HR', 'Phoenix', 57000.00),
+    -> (10, 'Jack Lewis', 39, 'M', '2023-10-05', 'Sales', 'Denver', 73000.00),
+    -> (11, 'Kate Harris', 25, 'F', '2023-11-15', 'IT', 'Portland', 88000.00),
+    -> (12, 'Liam Robinson', 42, 'M', '2023-12-01', 'Marketing', 'San Diego', 75000.00);
+Query OK, 12 rows affected (0.00 sec)
+Records: 12  Duplicates: 0  Warnings: 0
+
+mysql> select * from employe;
++--------+---------------+------+--------+------------+-----------+---------------+--------+
+| Emp_Id | Emp_name      | Age  | Gender | DOJ        | Dept      | city          | Salary |
++--------+---------------+------+--------+------------+-----------+---------------+--------+
+|      1 | Alice Johnson |   28 | F      | 2023-01-15 | Finance   | New York      |  60000 |
+|      2 | Bob Smith     |   34 | M      | 2023-05-22 | IT        | San Francisco |  75000 |
+|      3 | Carol White   |   29 | F      | 2023-02-10 | HR        | Los Angeles   |  55000 |
+|      4 | David Brown   |   45 | M      | 2023-03-05 | Marketing | Chicago       |  80000 |
+|      5 | Eve Davis     |   38 | F      | 2023-06-18 | Sales     | Houston       |  68000 |
+|      6 | Frank Miller  |   41 | M      | 2023-04-15 | IT        | Seattle       |  90000 |
+|      7 | Grace Wilson  |   26 | F      | 2023-07-01 | Marketing | Boston        |  70000 |
+|      8 | Henry Moore   |   33 | M      | 2023-08-20 | Finance   | Miami         |  62000 |
+|      9 | Ivy Clark     |   30 | F      | 2023-09-10 | HR        | Phoenix       |  57000 |
+|     10 | Jack Lewis    |   39 | M      | 2023-10-05 | Sales     | Denver        |  73000 |
+|     11 | Kate Harris   |   25 | F      | 2023-11-15 | IT        | Portland      |  88000 |
+|     12 | Liam Robinson |   42 | M      | 2023-12-01 | Marketing | San Diego     |  75000 |
++--------+---------------+------+--------+------------+-----------+---------------+--------+
+12 rows in set (0.00 sec)
+
+mysql> select dept,avg(salary) from employe
+    -> group by dept;
++-----------+-------------------+
+| dept      | avg(salary)       |
++-----------+-------------------+
+| Finance   |             61000 |
+| HR        |             56000 |
+| IT        | 84333.33333333333 |
+| Marketing |             75000 |
+| Sales     |             70500 |
++-----------+-------------------+
+5 rows in set (0.00 sec)
+
+mysql> select dept,avg(age) from employe
+    -> group by dept;
++-----------+----------+
+| dept      | avg(age) |
++-----------+----------+
+| Finance   |  30.5000 |
+| HR        |  29.5000 |
+| IT        |  33.3333 |
+| Marketing |  37.6667 |
+| Sales     |  38.5000 |
++-----------+----------+
+5 rows in set (0.00 sec)
